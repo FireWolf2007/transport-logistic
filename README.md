@@ -84,6 +84,33 @@ https://start.jhipster.tech/jdl-studio/
 
 На этом этапе начальная часть приложения готова.
 
+## Eclipse
+### route-service
+
+При импорте основного проекта в Eclipse добавляем исключения:
+
+`Properties` -> `Resource` -> `Resource Filters` -> нажать `Add Filter...`
+
+В форме `[.] Exclude all`, `[.] Files and folders`, `[v] Add children (recursive)`
+
+Блок `File And Folder Attributes` -> `[Project Relative Path]` `[matches]` `[route-service/node_modules]`
+
+сохраняем -> `OK`
+
+Это исключит валидацию не интересных нам веб-зависимостей.
+
+## Про уязвимости
+
+14/06/2018 вышел отчет о найденных уязвимостях в библиотеках
+
+https://spring.io/blog/2018/06/14/spring-project-vulnerability-reports-published
+
+Соответственно стоит перейти на Spring Boot 1.5.14 или 2.0.3, либо если не используется Spring Boot обновить зависимости Spring Framework на версии 4.3.18 и 5.0.7 соответственно.
+
+Идем в gradle.properties и меняем
+`spring_boot_version=1.5.13.RELEASE` -> `spring_boot_version=1.5.14.RELEASE`
+
+
 ## База данных
 
 **Предварительно надо поставить docker, docker-compose.**
@@ -179,29 +206,38 @@ REST API доступен по адресу http://127.0.0.1:8080/#/docs
 
 Есть небольшая проблема - не отобажается 0 в angular. Отложим пока это на потом, т.к. для нас это не критично - все работает и компилируется.
 
+## Формируем необходимый REST API
 
-# Eclipse
-## route-service
+Для удобства выберем отдельный префикс для запросов сделанных мной, а не генератором /api/ext/
 
-При импорте основного проекта в Eclipse добавляем исключения:
+Заодно будет проще выполнить настройку security на все эти точки входа.
 
-`Properties` -> `Resource` -> `Resource Filters` -> нажать `Add Filter...`
 
-В форме `[.] Exclude all`, `[.] Files and folders`, `[v] Add children (recursive)`
+1. Добавить маршрут:
 
-Блок `File And Folder Attributes` -> `[Project Relative Path]` `[matches]` `[route-service/node_modules]`
+```
+POST /api/ext/add-route
+Вход: список точке маршрутов (List<Integer> routePoints)
+Выход: ResponseEntity<Integer>
+```
 
-сохраняем -> `OK`
+2. Получить список маршрутов (со списком точек маршрута)
 
-Это исключит валидацию не интересных нам веб-зависимостей.
+```
+GET /api/ext/routes-with-route-points
+Вход: пусто или Pageable
+Выход: ResponseEntity<List<ExtRouteDTO>>
+```
 
-# Про уязвимости
+где ExtRouteDTO - RouteDTO с точками маршрута.
 
-14/06/2018 вышел отчет о найденных уязвимостях в библиотеках
+3. Получить отдельный маршрут (с массивом точек маршрута).
 
-https://spring.io/blog/2018/06/14/spring-project-vulnerability-reports-published
+```
+GET /api/ext/route-with-route-points
+Вход: пусто или Pageable
+Выход: ResponseEntity<ExtRouteDTO>
+```
 
-Соответственно стоит перейти на Spring Boot 1.5.14 или 2.0.3, либо если не используется Spring Boot обновить зависимости Spring Framework на версии 4.3.18 и 5.0.7 соответственно.
+где ExtRouteDTO - RouteDTO с точками маршрута.
 
-Идем в gradle.properties и меняем
-`spring_boot_version=1.5.13.RELEASE` -> `spring_boot_version=1.5.14.RELEASE`
