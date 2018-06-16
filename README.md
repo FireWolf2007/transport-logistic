@@ -159,7 +159,7 @@ https://spring.io/blog/2018/06/14/spring-project-vulnerability-reports-published
 
 REST API доступен по адресу http://127.0.0.1:8080/#/docs
 
-Там можно посмотреть описания и подергать вызовы варучную.
+Там можно посмотреть описания и подергать вызовы вручную.
 
 ## Liquibase
 
