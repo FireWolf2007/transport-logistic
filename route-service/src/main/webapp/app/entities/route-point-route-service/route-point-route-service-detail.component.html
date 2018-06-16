@@ -6,7 +6,7 @@
     <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="routeServiceApp.routePoint.route">Route</span></dt>
         <dd>
-            <div *ngIf="routePoint.routeId">
+            <div *ngIf="routePoint.routeId !== ''">
                 <a [routerLink]="['/route-route-service', routePoint.routeId]">{{routePoint.routeId}}</a>
             </div>
         </dd>

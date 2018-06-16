@@ -10,13 +10,13 @@
         </dd>
         <dt><span jhiTranslate="routeServiceApp.routeGraph.pointFirst">Point First</span></dt>
         <dd>
-            <div *ngIf="routeGraph.pointFirstId">
+            <div *ngIf="routeGraph.pointFirstId !== ''">
                 <a [routerLink]="['/route-point-route-service', routeGraph.pointFirstId]">{{routeGraph.pointFirstId}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="routeServiceApp.routeGraph.pointSecond">Point Second</span></dt>
         <dd>
-            <div *ngIf="routeGraph.pointSecondId">
+            <div *ngIf="routeGraph.pointSecondId !== ''">
                 <a [routerLink]="['/route-point-route-service', routeGraph.pointSecondId]">{{routeGraph.pointSecondId}}</a>
             </div>
         </dd>
