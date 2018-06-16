@@ -32,7 +32,7 @@
 ## Комментарии по ходу решения задачи
 
 
-Используется jhipster (https://github.com/jhipster/generator-jhipster) для быстрой инициализации кода приложения.
+Используется jhipster ([JHipster github](https://github.com/jhipster/generator-jhipster)) для быстрой инициализации кода приложения.
 
 **Предварительно надо поставить nodejs, npm, yo, yarn, generator-jhipster.**
 
@@ -65,7 +65,7 @@
 
 Тут все просто идем в node_modules/generator-jhipster и правим `route: ActivatedRoute` -> `activatedRoute: ActivatedRoute` и соответственно по коду `this.route` -> `this.activatedRoute`
 
-заодно не забываем делать pull-request в основной репозиторий со всеми нашими изменениями (https://github.com/jhipster/generator-jhipster/pull/7797).
+заодно не забываем делать pull-request в основной репозиторий со всеми нашими изменениями ([Pull request](https://github.com/jhipster/generator-jhipster/pull/7797)).
 
 ### *JDL*
 Для простоты идем в online JDL-Studio (можно поставить локально docker контейнер и использовать его для исключения утечек данных)
@@ -253,7 +253,7 @@ GET /api/ext/get-route
 
 Самый простой и рабочий способ это выполнить строгое неравенство с пустой строкой.
 
-Аналогичная проблема была в дочернем проекте ng-jhipster (Code review: https://github.com/jhipster/ng-jhipster/pull/68#pullrequestreview-121644461), там вопрос решили с помощью нескольких сравнений (null, undefined и т.д.).
+Аналогичная проблема была в дочернем проекте ng-jhipster ([Code review](https://github.com/jhipster/ng-jhipster/pull/68#pullrequestreview-121644461)), там вопрос решили с помощью нескольких сравнений (null, undefined и т.д.).
 
 НЕ ЗАБЫТЬ СДЕЛАТЬ pull request.
 
