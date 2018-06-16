@@ -128,4 +128,7 @@ https://start.jhipster.tech/jdl-studio/
 
 https://spring.io/blog/2018/06/14/spring-project-vulnerability-reports-published
 
-Соответственно стоит перейти на Spring Boot 1.5.4 или 2.0.3, либо если не используется Spring Boot обновить зависимости Spring Framework на версии 4.3.18 и 5.0.7 соответственно.
+Соответственно стоит перейти на Spring Boot 1.5.14 или 2.0.3, либо если не используется Spring Boot обновить зависимости Spring Framework на версии 4.3.18 и 5.0.7 соответственно.
+
+Идем в gradle.properties и меняем
+`spring_boot_version=1.5.13.RELEASE` -> `spring_boot_version=1.5.14.RELEASE`
