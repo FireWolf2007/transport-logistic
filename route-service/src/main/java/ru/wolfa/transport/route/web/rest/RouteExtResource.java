@@ -1,12 +1,15 @@
 package ru.wolfa.transport.route.web.rest;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codahale.metrics.annotation.Timed;
 
 import ru.wolfa.transport.route.service.RouteExtService;
+import ru.wolfa.transport.route.service.dto.ExtRouteDTO;
 import ru.wolfa.transport.route.service.dto.RouteDTO;
 import ru.wolfa.transport.route.web.rest.errors.BadRequestAlertException;
-import ru.wolfa.transport.route.web.rest.util.HeaderUtil;
 
 /**
  * 
@@ -38,9 +41,21 @@ public class RouteExtResource {
         }
         RouteDTO dto = new RouteDTO();
         RouteDTO result = routeExtService.save(dto, routePoints);
-        return ResponseEntity.created(new URI("/api/ext/add-route/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result.getId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(result.getId());
+    }
+
+    @GetMapping("/get-routes")
+    @Timed
+    public ResponseEntity<Page<ExtRouteDTO>> getRoutes(Pageable pageable) {
+        Page<ExtRouteDTO> result = routeExtService.getRoutes(pageable);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/get-route")
+    @Timed
+    public ResponseEntity<ExtRouteDTO> getRoute(Long id) {
+        ExtRouteDTO result = routeExtService.findOne(id);
+        return ResponseEntity.ok(result);
     }
 
     public RouteExtResource(RouteExtService routeExtService) {

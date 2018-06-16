@@ -224,9 +224,9 @@ POST /api/ext/add-route
 2. Получить список маршрутов (со списком точек маршрута)
 
 ```
-GET /api/ext/routes-with-route-points
+GET /api/ext/get-routes
 Вход: пусто или Pageable
-Выход: ResponseEntity<List<ExtRouteDTO>>
+Выход: ResponseEntity<Page<ExtRouteDTO>>
 ```
 
 где ExtRouteDTO - RouteDTO с точками маршрута.
@@ -234,8 +234,8 @@ GET /api/ext/routes-with-route-points
 3. Получить отдельный маршрут (с массивом точек маршрута).
 
 ```
-GET /api/ext/route-with-route-points
-Вход: пусто или Pageable
+GET /api/ext/get-route
+Вход: Long id
 Выход: ResponseEntity<ExtRouteDTO>
 ```
 
@@ -254,3 +254,18 @@ GET /api/ext/route-with-route-points
 Самый простой и рабочий способ это выполнить строгое неравенство с пустой строкой.
 
 Аналогичная проблема была в дочернем проекте ng-jhipster (Code review: https://github.com/jhipster/ng-jhipster/pull/68#pullrequestreview-121644461), там вопрос решили с помощью нескольких сравнений (null, undefined и т.д.).
+
+НЕ ЗАБЫТЬ СДЕЛАТЬ pull request.
+
+
+## Коментарий по выборке в /api/ext/get-routes
+
+ExtRouteRepository.findAll
+
+Для быстроты работы выбран подход с EAGER loading, но это не очень хороший вариант, т.к. все выгребается в память и уже там делается пагинация!
+
+Это проблема пагинации с left outer join, т.к. на каждую строку route мы получаем несколько строк и из них формируются сущности.
+
+Если не подключать EntityGraph - то будет проблема n+1 запроса, что в целом при небольших страницах не будет сильно нагружать БД.
+
+Вариант решения - это выполнить один отдельный запрос к RoutePoints с указанием всех id, что мы собрали в первом запросе без EAGER loading.
