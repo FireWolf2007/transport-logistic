@@ -53,8 +53,8 @@ public class RouteExtResource {
 
     @GetMapping("/get-route")
     @Timed
-    public ResponseEntity<ExtRouteDTO> getRoute(Long id) {
-        ExtRouteDTO result = routeExtService.findOne(id);
+    public ResponseEntity<ExtRouteDTO> getRoute(Long routeId) {
+        ExtRouteDTO result = routeExtService.findOne(routeId);
         return ResponseEntity.ok(result);
     }
 

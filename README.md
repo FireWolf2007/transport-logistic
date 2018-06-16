@@ -217,7 +217,7 @@ REST API доступен по адресу http://127.0.0.1:8080/#/docs
 
 ```
 POST /api/ext/add-route
-Вход: список точке маршрутов (List<Integer> routePoints)
+Вход: список точек маршрутов (List<Integer> routePoints)
 Выход: ResponseEntity<Integer>
 ```
 
@@ -225,7 +225,7 @@ POST /api/ext/add-route
 
 ```
 GET /api/ext/get-routes
-Вход: пусто или Pageable
+Вход: пусто или Pageable, в query параметры page, size, sort
 Выход: ResponseEntity<Page<ExtRouteDTO>>
 ```
 
@@ -235,7 +235,7 @@ GET /api/ext/get-routes
 
 ```
 GET /api/ext/get-route
-Вход: Long id
+Вход: Long routeId, в query параметр routeId
 Выход: ResponseEntity<ExtRouteDTO>
 ```
 
@@ -327,3 +327,5 @@ Note: Unnecessary use of -X or --request, GET is already inferred.
 * Connection #0 to host 127.0.0.1 left intact
 }
 ```
+
+## timing-service
