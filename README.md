@@ -110,6 +110,11 @@ https://spring.io/blog/2018/06/14/spring-project-vulnerability-reports-published
 Идем в gradle.properties и меняем
 `spring_boot_version=1.5.13.RELEASE` -> `spring_boot_version=1.5.14.RELEASE`
 
+Но кажется этот метод уже не работает, т.к. используется зависимость
+[https://github.com/jhipster/jhipster-dependencies/blob/v0.1.12/pom.xml](https://github.com/jhipster/jhipster-dependencies/blob/v0.1.12/pom.xml)
+где прописана версия 1.5.13.
+
+Обновления пока не последовало, т.к. в проекте что-то поломалось при обновлении [тут идет обсуждение обновления](https://github.com/jhipster/generator-jhipster/issues/7783).
 
 ## База данных
 
@@ -329,3 +334,35 @@ Note: Unnecessary use of -X or --request, GET is already inferred.
 ```
 
 ## timing-service
+
+Генерируется аналогично route-service.
+
+Для возможности совместного использования с БД route-service делаем сущность RouteGraph идентичной по структуре с той, что получилась в route-service.
+
+Проект настраиваю именно на совместное использование БД.
+
+Для перенастройки на свою БД нужно исправить `application-prod.yml` (и/или `application-dev.yml`):
+
+Поставить комментарий в настройке url содержащией RouteService и убрать его в настройке url с TimingService:
+
+```
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        #url: jdbc:postgresql://localhost:5432/TimingService
+        url: jdbc:postgresql://localhost:5432/RouteService
+        #username: TimingService
+        username: RouteService
+
+```
+
+
+## REST API
+
+1. Рассчитать время маршрута по точкам:
+
+```
+POST /api/ext/route-timing
+Вход: список точек маршрутов (List<Integer> routePoints)
+Выход: ResponseEntity<Long>
+```

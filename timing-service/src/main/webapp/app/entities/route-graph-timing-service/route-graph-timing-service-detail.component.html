@@ -1,0 +1,34 @@
+
+<div *ngIf="routeGraph">
+    <h2><span jhiTranslate="timingServiceApp.routeGraph.detail.title">Route Graph</span> {{routeGraph.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="timingServiceApp.routeGraph.pointFirstId">Point First Id</span></dt>
+        <dd>
+            <span>{{routeGraph.pointFirstId}}</span>
+        </dd>
+        <dt><span jhiTranslate="timingServiceApp.routeGraph.pointSecondId">Point Second Id</span></dt>
+        <dd>
+            <span>{{routeGraph.pointSecondId}}</span>
+        </dd>
+        <dt><span jhiTranslate="timingServiceApp.routeGraph.time">Time</span></dt>
+        <dd>
+            <span>{{routeGraph.time}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'route-graph-timing-service/'+ routeGraph.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

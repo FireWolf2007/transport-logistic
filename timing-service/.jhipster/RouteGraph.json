@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "pointFirstId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "pointSecondId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "time",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180616191500",
+    "entityTableName": "route_graph",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "timingService"
+}

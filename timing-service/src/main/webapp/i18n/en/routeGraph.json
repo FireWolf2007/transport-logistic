@@ -1,0 +1,24 @@
+
+{
+    "timingServiceApp": {
+        "routeGraph" : {
+            "home": {
+                "title": "Route Graphs",
+                "createLabel": "Create a new Route Graph",
+                "createOrEditLabel": "Create or edit a Route Graph"
+            },
+            "created": "A new Route Graph is created with identifier {{ param }}",
+            "updated": "A Route Graph is updated with identifier {{ param }}",
+            "deleted": "A Route Graph is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Route Graph {{ id }}?"
+            },
+            "detail": {
+                "title": "Route Graph"
+            },
+            "pointFirstId": "Point First Id",
+            "pointSecondId": "Point Second Id",
+            "time": "Time"
+        }
+    }
+}
