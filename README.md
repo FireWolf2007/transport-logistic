@@ -122,3 +122,10 @@ https://start.jhipster.tech/jdl-studio/
 
 Это исключит валидацию не интересных нам веб-зависимостей.
 
+# Про уязвимости
+
+14/06/2018 вышел отчет о найденных уязвимостях в библиотеках
+
+https://spring.io/blog/2018/06/14/spring-project-vulnerability-reports-published
+
+Соответственно стоит перейти на Spring Boot 1.5.4 или 2.0.3, либо если не используется Spring Boot обновить зависимости Spring Framework на версии 4.3.18 и 5.0.7 соответственно.
