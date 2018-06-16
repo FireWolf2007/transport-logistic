@@ -38,7 +38,7 @@
 
 ## route-service
 
-###*generator-jhipster*
+### *generator-jhipster*
 
 `mkdir route-service`
 
@@ -67,7 +67,7 @@
 
 заодно не забываем делать pull-request в основной репозиторий со всеми нашими изменениями (https://github.com/jhipster/generator-jhipster/pull/7797).
 
-###*JDL*
+### *JDL*
 Для простоты идем в online JDL-Studio (можно поставить локально docker контейнер и использовать его для исключения утечек данных)
 
 https://start.jhipster.tech/jdl-studio/
@@ -84,18 +84,41 @@ https://start.jhipster.tech/jdl-studio/
 
 На этом этапе начальная часть приложения готова.
 
+## База данных
+
+**Предварительно надо поставить docker, docker-compose.**
+
+При генерации приложения была выбрана БД PostgreSQL.
+
+Соответственно, если имеется локальная БД её требуется либо остановить, либо настроить.
+
+1. Для настройки: пользователь RouteService, пароль пустой, название БД RouteService
+
+2. Либо можно поступить проще приостановить локальный сервис и запустить БД в docker с использованием docker-compose:
+
+`cd route-service`
+
+`docker-compose -f src/main/docker/postgresql.yml up` либо в фоновом режиме: `docker-compose -f src/main/docker/postgresql.yml up -d`
+
+Если требуется, чтобы БД в docker работала всегда (в т.ч. и после перезапуска) в yml-конфиг нужно добавить `restart: always`
+
+Я выбрал для себя вариант с остановкой лолкальной БД и запуском приложения в docker по необходимости.
+
+
+
+ 
 # Eclipse
 ## route-service
 
 При импорте основного проекта в Eclipse добавляем исключения:
 
-Properties -> Resource -> Resource Filters -> click "Add Filter..."
+`Properties` -> `Resource` -> `Resource Filters` -> нажать `Add Filter...`
 
-В форме [.] Exclude all, [.] Files and folders, [v] Add children (recursive)
+В форме `[.] Exclude all`, `[.] Files and folders`, `[v] Add children (recursive)`
 
-Блок File And Folder Attributes -> [Project Relative Path] [matches] [route-service/node_modules]
+Блок `File And Folder Attributes` -> `[Project Relative Path]` `[matches]` `[route-service/node_modules]`
 
-сохраняем -> "OK"
+сохраняем -> `OK`
 
 Это исключит валидацию не интересных нам веб-зависимостей.
 
