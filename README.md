@@ -269,3 +269,61 @@ ExtRouteRepository.findAll
 Если не подключать EntityGraph - то будет проблема n+1 запроса, что в целом при небольших страницах не будет сильно нагружать БД.
 
 Вариант решения - это выполнить один отдельный запрос к RoutePoints с указанием всех id, что мы собрали в первом запросе без EAGER loading.
+
+## Доступы на /api/ext
+
+Донастраиваем доступы в `SecurityConfiguration` в методе `void configure(HttpSecurity http)` добавлением разрешения доступа к `/api/ext/**`:
+`.antMatchers("/api/ext/**").permitAll()`
+
+Перезапускаем приложение и проверяем с помощью curl:
+
+```
+curl -v -X GET 'http://127.0.0.1:8080/api/ext/get-routes'
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 127.0.0.1...
+* Connected to 127.0.0.1 (127.0.0.1) port 8080 (#0)
+> GET /api/ext/get-routes HTTP/1.1
+> Host: 127.0.0.1:8080
+> User-Agent: curl/7.47.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Expires: 0
+< Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+< X-XSS-Protection: 1; mode=block
+< Pragma: no-cache
+< Date: Sat, 16 Jun 2018 17:07:29 GMT
+< Connection: keep-alive
+< X-Content-Type-Options: nosniff
+< Transfer-Encoding: chunked
+< Content-Type: application/json;charset=UTF-8
+< X-Application-Context: RouteService:swagger,dev:8080
+< 
+{
+  "content" : [ {
+    "id" : 0,
+    "isReady" : null,
+    "time" : null,
+    "routePoints" : [ 0, 4, 5, 6, 7, 8, 9 ]
+  }, {
+    "id" : 951,
+    "isReady" : null,
+    "time" : null,
+    "routePoints" : [ 1, 2, 3 ]
+  }, {
+    "id" : 1001,
+    "isReady" : null,
+    "time" : null,
+    "routePoints" : [ 1051, 1052, 1053, 1054 ]
+  } ],
+  "last" : true,
+  "totalElements" : 3,
+  "totalPages" : 1,
+  "first" : true,
+  "numberOfElements" : 3,
+  "sort" : null,
+  "size" : 0,
+  "number" : 0
+* Connection #0 to host 127.0.0.1 left intact
+}
+```
