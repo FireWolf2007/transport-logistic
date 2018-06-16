@@ -16,14 +16,14 @@
 3. Серв1 могут использовать все, Серв2 только другие сервисы (организовать доступ по ролям).
 
 Сущности:
-    Маршрут:
+    Маршрут (Route):
         id – int
         is_ready – bool //посчитано ли время на маршрут
         time – int // время на маршрут в минутах
-    Точки маршрута:
+    Точки маршрута (RoutePoint):
         id – int
         id_route – int //ид маршрута
-    Граф точек маршрутов: (в файле data.csv данные для этой сущности)
+    Граф точек маршрутов (RouteGraph): (в файле data.csv данные для этой сущности)
         id_point_one – int // ид первой точки
         id_point_second -  int //ид второй точки
         time – int // время на преодоления расстояния между двумя точками
@@ -104,9 +104,82 @@ https://start.jhipster.tech/jdl-studio/
 
 Я выбрал для себя вариант с остановкой лолкальной БД и запуском приложения в docker по необходимости.
 
+## Первый запуск приложение
+
+**Предварительно убедиться, что порт 8080 свободен**
+
+Для сборки и запуска приложения выполняем `gradle`
+
+Приложение запустится в dev профиле, соответственно создаст таблички и затянет все данные (если они есть) миграциями с помощью liquibase.
+
+После того как мы увидим следующее:
+
+```
+2018-06-16 10:11:01.955  INFO 23170 --- [  restartedMain] r.wolfa.transport.route.RouteServiceApp  :
+----------------------------------------------------------
+        Application 'RouteService' is running! Access URLs:
+        Local:          http://localhost:8080
+        External:       http://127.0.1.1:8080
+        Profile(s):     [swagger, dev]
+----------------------------------------------------------
+```
+
+Сервер запущен и готов к работе.
+
+Можем открыть angular приложение и посмотреть, какие имеются REST API:
+
+### REST API
+
+REST API доступен по адресу http://127.0.0.1:8080/#/docs
+
+Там можно посмотреть описания и подергать вызовы варучную.
+
+## Liquibase
+
+Для инициализации данных из файла `data.csv` мы воспользуемся миграциями liquibase.
+
+### Готовим данные в `route-service/src/main/resources/config/liquibase`
+
+В файле `master.xml` добавляем новый файл для миграции (в конец перед `</databaseChangeLog>`)
+
+```
+<include file="config/liquibase/changelog/InitialDataLoading.xml" relativeToChangelogFile="false"/>
+```
+и создаем `route-service/src/main/resources/config/liquibase/changelog/InitialDataLoading.xml`
+
+Добаляем файлы данных в `route-service/src/main/resources/config/liquibase/initialdata`
+
+### Перегенерация приложения в связи с рефакторингом полей БД
+
+Мы выбрали не удачные имена для полей (point_one, point_two, а ровно как и point_one, point_second как в ТЗ) - соответственно делаем более корректные названия полей point_first, point_second.
+
+Останавливаем наш процесс `gradle` и продолжаем.
+
+Меняем `route-service.jh` и перегенерируем сущности
+
+`cd route-service`
+
+`yo jhipster:import-jdl route-service.jh`
+
+Также нам надо пересоздать БД для этого останавливаем на docker с БД, удаляем его:
+
+Получаем id существующего docker контейнера: `docker ps -a | grep docker_routeservice-postgresql | awk '{print $1}'`
+
+в моем случае это `6ad333cc272d`
+
+и удаляем его: `docker rm 6ad333cc272d`
+
+если не удаляется контейнер (есть ошибки), то скорее всего он запущен и его надо остановить: `docker stop 6ad333cc272d`
+
+или все одной командой: `docker rm &#96;docker ps -a | grep docker_routeservice-postgresql | awk '{print $1}'&#96;`
+
+и запускаем заново БД: `cd route-service && docker-compose -f src/main/docker/postgresql.yml up`
+
+Запускаем приложение: `gradle`
+
+Есть небольшая проблема - не отобажается 0 в angular. Отложим пока это на потом, т.к. для нас это не критично - все работает и компилируется.
 
 
- 
 # Eclipse
 ## route-service
 

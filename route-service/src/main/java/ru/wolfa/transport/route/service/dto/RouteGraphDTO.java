@@ -16,9 +16,9 @@ public class RouteGraphDTO implements Serializable {
 
     private Integer time;
 
-    private Long pointOneId;
+    private Long pointFirstId;
 
-    private Long pointTwoId;
+    private Long pointSecondId;
 
     public Long getId() {
         return id;
@@ -36,20 +36,20 @@ public class RouteGraphDTO implements Serializable {
         this.time = time;
     }
 
-    public Long getPointOneId() {
-        return pointOneId;
+    public Long getPointFirstId() {
+        return pointFirstId;
     }
 
-    public void setPointOneId(Long routePointId) {
-        this.pointOneId = routePointId;
+    public void setPointFirstId(Long routePointId) {
+        this.pointFirstId = routePointId;
     }
 
-    public Long getPointTwoId() {
-        return pointTwoId;
+    public Long getPointSecondId() {
+        return pointSecondId;
     }
 
-    public void setPointTwoId(Long routePointId) {
-        this.pointTwoId = routePointId;
+    public void setPointSecondId(Long routePointId) {
+        this.pointSecondId = routePointId;
     }
 
     @Override

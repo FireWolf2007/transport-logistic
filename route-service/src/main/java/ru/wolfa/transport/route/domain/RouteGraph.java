@@ -29,11 +29,11 @@ public class RouteGraph implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    private RoutePoint pointOne;
+    private RoutePoint pointFirst;
 
     @ManyToOne(optional = false)
     @NotNull
-    private RoutePoint pointTwo;
+    private RoutePoint pointSecond;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -57,30 +57,30 @@ public class RouteGraph implements Serializable {
         this.time = time;
     }
 
-    public RoutePoint getPointOne() {
-        return pointOne;
+    public RoutePoint getPointFirst() {
+        return pointFirst;
     }
 
-    public RouteGraph pointOne(RoutePoint routePoint) {
-        this.pointOne = routePoint;
+    public RouteGraph pointFirst(RoutePoint routePoint) {
+        this.pointFirst = routePoint;
         return this;
     }
 
-    public void setPointOne(RoutePoint routePoint) {
-        this.pointOne = routePoint;
+    public void setPointFirst(RoutePoint routePoint) {
+        this.pointFirst = routePoint;
     }
 
-    public RoutePoint getPointTwo() {
-        return pointTwo;
+    public RoutePoint getPointSecond() {
+        return pointSecond;
     }
 
-    public RouteGraph pointTwo(RoutePoint routePoint) {
-        this.pointTwo = routePoint;
+    public RouteGraph pointSecond(RoutePoint routePoint) {
+        this.pointSecond = routePoint;
         return this;
     }
 
-    public void setPointTwo(RoutePoint routePoint) {
-        this.pointTwo = routePoint;
+    public void setPointSecond(RoutePoint routePoint) {
+        this.pointSecond = routePoint;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

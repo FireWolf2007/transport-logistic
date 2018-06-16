@@ -25,11 +25,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="point_one_id" type="bigint">
+            <column name="point_first_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 
-            <column name="point_two_id" type="bigint">
+            <column name="point_second_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 

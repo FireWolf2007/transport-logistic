@@ -92,15 +92,15 @@ public class RouteGraphResourceIntTest {
         RouteGraph routeGraph = new RouteGraph()
             .time(DEFAULT_TIME);
         // Add required entity
-        RoutePoint pointOne = RoutePointResourceIntTest.createEntity(em);
-        em.persist(pointOne);
+        RoutePoint pointFirst = RoutePointResourceIntTest.createEntity(em);
+        em.persist(pointFirst);
         em.flush();
-        routeGraph.setPointOne(pointOne);
+        routeGraph.setPointFirst(pointFirst);
         // Add required entity
-        RoutePoint pointTwo = RoutePointResourceIntTest.createEntity(em);
-        em.persist(pointTwo);
+        RoutePoint pointSecond = RoutePointResourceIntTest.createEntity(em);
+        em.persist(pointSecond);
         em.flush();
-        routeGraph.setPointTwo(pointTwo);
+        routeGraph.setPointSecond(pointSecond);
         return routeGraph;
     }
 

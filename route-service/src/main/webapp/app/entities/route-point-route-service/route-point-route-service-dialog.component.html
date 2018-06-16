@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="routeServiceApp.routePoint.route" for="field_route">Route</label>
-            <select class="form-control" id="field_route" name="route" [(ngModel)]="routePoint.routeId" required>
+            <select class="form-control" id="field_route" name="route" [(ngModel)]="routePoint.routeId"  required>
                 <option *ngIf="!editForm.value.route" [ngValue]="null" selected></option>
                 <option [ngValue]="routeOption.id" *ngFor="let routeOption of routes; trackBy: trackRouteById">{{routeOption.id}}</option>
             </select>

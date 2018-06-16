@@ -24,9 +24,8 @@ public class RoutePoint implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
     private Route route;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

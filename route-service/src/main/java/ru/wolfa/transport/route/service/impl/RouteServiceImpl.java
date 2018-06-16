@@ -12,10 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing Route.
@@ -61,21 +57,6 @@ public class RouteServiceImpl implements RouteService {
         log.debug("Request to get all Routes");
         return routeRepository.findAll(pageable)
             .map(routeMapper::toDto);
-    }
-
-
-    /**
-     *  get all the routes where Routes is null.
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
-    public List<RouteDTO> findAllWhereRoutesIsNull() {
-        log.debug("Request to get all routes where Routes is null");
-        return StreamSupport
-            .stream(routeRepository.findAll().spliterator(), false)
-            .filter(route -> route.getRoutes() == null)
-            .map(routeMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

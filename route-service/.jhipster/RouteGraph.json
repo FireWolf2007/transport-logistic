@@ -4,14 +4,14 @@
         {
             "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
-            "relationshipName": "pointOne",
+            "relationshipName": "pointFirst",
             "otherEntityName": "routePoint",
             "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
-            "relationshipName": "pointTwo",
+            "relationshipName": "pointSecond",
             "otherEntityName": "routePoint",
             "otherEntityField": "id"
         }

@@ -4,12 +4,11 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { RouteRouteService } from './route-route-service.model';
 import { RouteRouteServicePopupService } from './route-route-service-popup.service';
 import { RouteRouteServiceService } from './route-route-service.service';
-import { RoutePointRouteService, RoutePointRouteServiceService } from '../route-point-route-service';
 
 @Component({
     selector: 'jhi-route-route-service-dialog',
@@ -20,21 +19,15 @@ export class RouteRouteServiceDialogComponent implements OnInit {
     route: RouteRouteService;
     isSaving: boolean;
 
-    routepoints: RoutePointRouteService[];
-
     constructor(
         public activeModal: NgbActiveModal,
-        private jhiAlertService: JhiAlertService,
         private routeService: RouteRouteServiceService,
-        private routePointService: RoutePointRouteServiceService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.routePointService.query()
-            .subscribe((res: HttpResponse<RoutePointRouteService[]>) => { this.routepoints = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -65,14 +58,6 @@ export class RouteRouteServiceDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(error: any) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackRoutePointById(index: number, item: RoutePointRouteService) {
-        return item.id;
     }
 }
 

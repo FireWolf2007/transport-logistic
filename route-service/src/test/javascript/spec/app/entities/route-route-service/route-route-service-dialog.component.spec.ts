@@ -9,7 +9,6 @@ import { RouteServiceTestModule } from '../../../test.module';
 import { RouteRouteServiceDialogComponent } from '../../../../../../main/webapp/app/entities/route-route-service/route-route-service-dialog.component';
 import { RouteRouteServiceService } from '../../../../../../main/webapp/app/entities/route-route-service/route-route-service.service';
 import { RouteRouteService } from '../../../../../../main/webapp/app/entities/route-route-service/route-route-service.model';
-import { RoutePointRouteServiceService } from '../../../../../../main/webapp/app/entities/route-point-route-service';
 
 describe('Component Tests', () => {
 
@@ -25,7 +24,6 @@ describe('Component Tests', () => {
                 imports: [RouteServiceTestModule],
                 declarations: [RouteRouteServiceDialogComponent],
                 providers: [
-                    RoutePointRouteServiceService,
                     RouteRouteServiceService
                 ]
             })

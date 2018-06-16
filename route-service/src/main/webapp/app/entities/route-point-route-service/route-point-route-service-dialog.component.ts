@@ -33,19 +33,8 @@ export class RoutePointRouteServiceDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.routeService
-            .query({filter: 'routes-is-null'})
-            .subscribe((res: HttpResponse<RouteRouteService[]>) => {
-                if (!this.routePoint.routeId) {
-                    this.routes = res.body;
-                } else {
-                    this.routeService
-                        .find(this.routePoint.routeId)
-                        .subscribe((subRes: HttpResponse<RouteRouteService>) => {
-                            this.routes = [subRes.body].concat(res.body);
-                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
-                }
-            }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.routeService.query()
+            .subscribe((res: HttpResponse<RouteRouteService[]>) => { this.routes = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {

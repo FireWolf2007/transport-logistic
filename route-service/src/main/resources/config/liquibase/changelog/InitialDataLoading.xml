@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="InitialDataLoading" author="Volf Alexander">
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/initialdata/01-route.csv"
+                  separator=";"
+                  quotchar="&quot;"
+                  tableName="route">
+              <column name="exact_advert_url" type="boolean"/>
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/initialdata/01-route-point.csv"
+                  separator=";"
+                  quotchar="&quot;"
+                  tableName="route_point">
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/initialdata/01-route-graph.csv"
+                  separator=";"
+                  quotchar="&quot;"
+                  tableName="route_graph">
+        </loadData>
+
+    </changeSet>
+
+</databaseChangeLog>

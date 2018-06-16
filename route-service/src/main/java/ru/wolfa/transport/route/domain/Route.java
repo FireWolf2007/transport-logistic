@@ -7,6 +7,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -30,9 +32,10 @@ public class Route implements Serializable {
     @Column(name = "jhi_time")
     private Integer time;
 
-    @OneToOne(mappedBy = "route")
+    @OneToMany(mappedBy = "route")
     @JsonIgnore
-    private RoutePoint routes;
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<RoutePoint> routes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -69,17 +72,29 @@ public class Route implements Serializable {
         this.time = time;
     }
 
-    public RoutePoint getRoutes() {
+    public Set<RoutePoint> getRoutes() {
         return routes;
     }
 
-    public Route routes(RoutePoint routePoint) {
-        this.routes = routePoint;
+    public Route routes(Set<RoutePoint> routePoints) {
+        this.routes = routePoints;
         return this;
     }
 
-    public void setRoutes(RoutePoint routePoint) {
-        this.routes = routePoint;
+    public Route addRoutes(RoutePoint routePoint) {
+        this.routes.add(routePoint);
+        routePoint.setRoute(this);
+        return this;
+    }
+
+    public Route removeRoutes(RoutePoint routePoint) {
+        this.routes.remove(routePoint);
+        routePoint.setRoute(null);
+        return this;
+    }
+
+    public void setRoutes(Set<RoutePoint> routePoints) {
+        this.routes = routePoints;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

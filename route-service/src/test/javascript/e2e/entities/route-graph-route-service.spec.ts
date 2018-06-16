@@ -35,8 +35,8 @@ describe('RouteGraph e2e test', () => {
         routeGraphComponentsPage.clickOnCreateButton();
         routeGraphDialogPage.setTimeInput('5');
         expect(routeGraphDialogPage.getTimeInput()).toMatch('5');
-        routeGraphDialogPage.pointOneSelectLastOption();
-        routeGraphDialogPage.pointTwoSelectLastOption();
+        routeGraphDialogPage.pointFirstSelectLastOption();
+        routeGraphDialogPage.pointSecondSelectLastOption();
         routeGraphDialogPage.save();
         expect(routeGraphDialogPage.getSaveButton().isPresent()).toBeFalsy();
     });*/
@@ -64,8 +64,8 @@ export class RouteGraphDialogPage {
     saveButton = element(by.css('.modal-footer .btn.btn-primary'));
     closeButton = element(by.css('button.close'));
     timeInput = element(by.css('input#field_time'));
-    pointOneSelect = element(by.css('select#field_pointOne'));
-    pointTwoSelect = element(by.css('select#field_pointTwo'));
+    pointFirstSelect = element(by.css('select#field_pointFirst'));
+    pointSecondSelect = element(by.css('select#field_pointSecond'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -79,36 +79,36 @@ export class RouteGraphDialogPage {
         return this.timeInput.getAttribute('value');
     };
 
-    pointOneSelectLastOption = function() {
-        this.pointOneSelect.all(by.tagName('option')).last().click();
+    pointFirstSelectLastOption = function() {
+        this.pointFirstSelect.all(by.tagName('option')).last().click();
     };
 
-    pointOneSelectOption = function(option) {
-        this.pointOneSelect.sendKeys(option);
+    pointFirstSelectOption = function(option) {
+        this.pointFirstSelect.sendKeys(option);
     };
 
-    getPointOneSelect = function() {
-        return this.pointOneSelect;
+    getPointFirstSelect = function() {
+        return this.pointFirstSelect;
     };
 
-    getPointOneSelectedOption = function() {
-        return this.pointOneSelect.element(by.css('option:checked')).getText();
+    getPointFirstSelectedOption = function() {
+        return this.pointFirstSelect.element(by.css('option:checked')).getText();
     };
 
-    pointTwoSelectLastOption = function() {
-        this.pointTwoSelect.all(by.tagName('option')).last().click();
+    pointSecondSelectLastOption = function() {
+        this.pointSecondSelect.all(by.tagName('option')).last().click();
     };
 
-    pointTwoSelectOption = function(option) {
-        this.pointTwoSelect.sendKeys(option);
+    pointSecondSelectOption = function(option) {
+        this.pointSecondSelect.sendKeys(option);
     };
 
-    getPointTwoSelect = function() {
-        return this.pointTwoSelect;
+    getPointSecondSelect = function() {
+        return this.pointSecondSelect;
     };
 
-    getPointTwoSelectedOption = function() {
-        return this.pointTwoSelect.element(by.css('option:checked')).getText();
+    getPointSecondSelectedOption = function() {
+        return this.pointSecondSelect.element(by.css('option:checked')).getText();
     };
 
     save() {

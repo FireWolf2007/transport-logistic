@@ -11,12 +11,12 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {RoutePointMapper.class})
 public interface RouteGraphMapper extends EntityMapper<RouteGraphDTO, RouteGraph> {
 
-    @Mapping(source = "pointOne.id", target = "pointOneId")
-    @Mapping(source = "pointTwo.id", target = "pointTwoId")
+    @Mapping(source = "pointFirst.id", target = "pointFirstId")
+    @Mapping(source = "pointSecond.id", target = "pointSecondId")
     RouteGraphDTO toDto(RouteGraph routeGraph);
 
-    @Mapping(source = "pointOneId", target = "pointOne")
-    @Mapping(source = "pointTwoId", target = "pointTwo")
+    @Mapping(source = "pointFirstId", target = "pointFirst")
+    @Mapping(source = "pointSecondId", target = "pointSecond")
     RouteGraph toEntity(RouteGraphDTO routeGraphDTO);
 
     default RouteGraph fromId(Long id) {

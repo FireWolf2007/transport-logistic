@@ -3,7 +3,6 @@ package ru.wolfa.transport.route.service;
 import ru.wolfa.transport.route.service.dto.RouteDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 /**
  * Service Interface for managing Route.
@@ -25,12 +24,6 @@ public interface RouteService {
      * @return the list of entities
      */
     Page<RouteDTO> findAll(Pageable pageable);
-    /**
-     * Get all the RouteDTO where Routes is null.
-     *
-     * @return the list of entities
-     */
-    List<RouteDTO> findAllWhereRoutesIsNull();
 
     /**
      * Get the "id" route.

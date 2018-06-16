@@ -17,8 +17,8 @@
                 "title": "Route Graph"
             },
             "time": "Time",
-            "pointOne": "Point One",
-            "pointTwo": "Point Two"
+            "pointFirst": "Point First",
+            "pointSecond": "Point Second"
         }
     }
 }

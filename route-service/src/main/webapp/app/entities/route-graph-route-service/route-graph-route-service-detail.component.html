@@ -8,16 +8,16 @@
         <dd>
             <span>{{routeGraph.time}}</span>
         </dd>
-        <dt><span jhiTranslate="routeServiceApp.routeGraph.pointOne">Point One</span></dt>
+        <dt><span jhiTranslate="routeServiceApp.routeGraph.pointFirst">Point First</span></dt>
         <dd>
-            <div *ngIf="routeGraph.pointOneId">
-                <a [routerLink]="['/route-point-route-service', routeGraph.pointOneId]">{{routeGraph.pointOneId}}</a>
+            <div *ngIf="routeGraph.pointFirstId">
+                <a [routerLink]="['/route-point-route-service', routeGraph.pointFirstId]">{{routeGraph.pointFirstId}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="routeServiceApp.routeGraph.pointTwo">Point Two</span></dt>
+        <dt><span jhiTranslate="routeServiceApp.routeGraph.pointSecond">Point Second</span></dt>
         <dd>
-            <div *ngIf="routeGraph.pointTwoId">
-                <a [routerLink]="['/route-point-route-service', routeGraph.pointTwoId]">{{routeGraph.pointTwoId}}</a>
+            <div *ngIf="routeGraph.pointSecondId">
+                <a [routerLink]="['/route-point-route-service', routeGraph.pointSecondId]">{{routeGraph.pointSecondId}}</a>
             </div>
         </dd>
     </dl>

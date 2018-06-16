@@ -5,7 +5,7 @@ export class RouteRouteService implements BaseEntity {
         public id?: number,
         public isReady?: boolean,
         public time?: number,
-        public routesId?: number,
+        public routes?: BaseEntity[],
     ) {
         this.isReady = false;
     }

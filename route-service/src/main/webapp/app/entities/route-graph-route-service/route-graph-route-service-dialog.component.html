@@ -19,28 +19,28 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="routeServiceApp.routeGraph.pointOne" for="field_pointOne">Point One</label>
-            <select class="form-control" id="field_pointOne" name="pointOne" [(ngModel)]="routeGraph.pointOneId"  required>
-                <option *ngIf="!editForm.value.pointOne" [ngValue]="null" selected></option>
+            <label class="form-control-label" jhiTranslate="routeServiceApp.routeGraph.pointFirst" for="field_pointFirst">Point First</label>
+            <select class="form-control" id="field_pointFirst" name="pointFirst" [(ngModel)]="routeGraph.pointFirstId"  required>
+                <option *ngIf="!editForm.value.pointFirst" [ngValue]="null" selected></option>
                 <option [ngValue]="routePointOption.id" *ngFor="let routePointOption of routepoints; trackBy: trackRoutePointById">{{routePointOption.id}}</option>
             </select>
         </div>
-        <div [hidden]="!(editForm.controls.pointOne?.dirty && editForm.controls.pointOne?.invalid)">
+        <div [hidden]="!(editForm.controls.pointFirst?.dirty && editForm.controls.pointFirst?.invalid)">
             <small class="form-text text-danger"
-                [hidden]="!editForm.controls.pointOne?.errors?.required" jhiTranslate="entity.validation.required">
+                [hidden]="!editForm.controls.pointFirst?.errors?.required" jhiTranslate="entity.validation.required">
                 This field is required.
             </small>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="routeServiceApp.routeGraph.pointTwo" for="field_pointTwo">Point Two</label>
-            <select class="form-control" id="field_pointTwo" name="pointTwo" [(ngModel)]="routeGraph.pointTwoId"  required>
-                <option *ngIf="!editForm.value.pointTwo" [ngValue]="null" selected></option>
+            <label class="form-control-label" jhiTranslate="routeServiceApp.routeGraph.pointSecond" for="field_pointSecond">Point Second</label>
+            <select class="form-control" id="field_pointSecond" name="pointSecond" [(ngModel)]="routeGraph.pointSecondId"  required>
+                <option *ngIf="!editForm.value.pointSecond" [ngValue]="null" selected></option>
                 <option [ngValue]="routePointOption.id" *ngFor="let routePointOption of routepoints; trackBy: trackRoutePointById">{{routePointOption.id}}</option>
             </select>
         </div>
-        <div [hidden]="!(editForm.controls.pointTwo?.dirty && editForm.controls.pointTwo?.invalid)">
+        <div [hidden]="!(editForm.controls.pointSecond?.dirty && editForm.controls.pointSecond?.invalid)">
             <small class="form-text text-danger"
-                [hidden]="!editForm.controls.pointTwo?.errors?.required" jhiTranslate="entity.validation.required">
+                [hidden]="!editForm.controls.pointSecond?.errors?.required" jhiTranslate="entity.validation.required">
                 This field is required.
             </small>
         </div>

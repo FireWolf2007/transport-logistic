@@ -8,8 +8,8 @@ entity RoutePoint {
 
 }
 
-relationship OneToOne {
-    RoutePoint{route required} to Route{routes}
+relationship ManyToOne {
+    RoutePoint{route(id) required} to Route{routes}
     //RoutePoint{route required} to Route
 }
 
@@ -18,8 +18,8 @@ entity RouteGraph {
 }
 
 relationship ManyToOne {
-    RouteGraph{pointOne required} to RoutePoint,
-    RouteGraph{pointTwo required} to RoutePoint
+    RouteGraph{pointFirst(id) required} to RoutePoint,
+    RouteGraph{pointSecond(id) required} to RoutePoint
 }
 
 // Set pagination options

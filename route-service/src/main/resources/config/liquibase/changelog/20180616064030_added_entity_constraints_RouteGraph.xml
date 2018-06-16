@@ -8,15 +8,15 @@
     -->
     <changeSet id="20180616064030-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="point_one_id"
+        <addForeignKeyConstraint baseColumnNames="point_first_id"
                                  baseTableName="route_graph"
-                                 constraintName="fk_route_graph_point_one_id"
+                                 constraintName="fk_route_graph_point_first_id"
                                  referencedColumnNames="id"
                                  referencedTableName="route_point"/>
 
-        <addForeignKeyConstraint baseColumnNames="point_two_id"
+        <addForeignKeyConstraint baseColumnNames="point_second_id"
                                  baseTableName="route_graph"
-                                 constraintName="fk_route_graph_point_two_id"
+                                 constraintName="fk_route_graph_point_second_id"
                                  referencedColumnNames="id"
                                  referencedTableName="route_point"/>
 

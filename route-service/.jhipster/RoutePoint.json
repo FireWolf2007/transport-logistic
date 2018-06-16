@@ -2,13 +2,11 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
             "relationshipName": "route",
             "otherEntityName": "route",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "routes"
+            "otherEntityField": "id"
         }
     ],
     "fields": [],

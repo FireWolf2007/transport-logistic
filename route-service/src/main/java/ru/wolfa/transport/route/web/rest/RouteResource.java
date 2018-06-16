@@ -21,7 +21,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing Route.
@@ -86,17 +85,11 @@ public class RouteResource {
      * GET  /routes : get all the routes.
      *
      * @param pageable the pagination information
-     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of routes in body
      */
     @GetMapping("/routes")
     @Timed
-    public ResponseEntity<List<RouteDTO>> getAllRoutes(Pageable pageable, @RequestParam(required = false) String filter) {
-        if ("routes-is-null".equals(filter)) {
-            log.debug("REST request to get all Routes where routes is null");
-            return new ResponseEntity<>(routeService.findAllWhereRoutesIsNull(),
-                    HttpStatus.OK);
-        }
+    public ResponseEntity<List<RouteDTO>> getAllRoutes(Pageable pageable) {
         log.debug("REST request to get a page of Routes");
         Page<RouteDTO> page = routeService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/routes");
