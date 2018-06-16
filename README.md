@@ -246,3 +246,11 @@ GET /api/ext/route-with-route-points
 ## Eclipse project route-service
 
 Импортируем как gradle проект и исключаем лишние папки аналогично тому, что было описано выше в блоке про Eclipse.
+
+## Исправление ошибки вывода ссылок на сущности с id=0
+
+В данном случае проблема в формировании условия *ngIF="routePoint.routeId" при значении routePoint.routeId=0 рассматривается как false.
+
+Самый простой и рабочий способ это выполнить строгое неравенство с пустой строкой.
+
+Аналогичная проблема была в дочернем проекте ng-jhipster (Code review: https://github.com/jhipster/ng-jhipster/pull/68#pullrequestreview-121644461), там вопрос решили с помощью нескольких сравнений (null, undefined и т.д.).
