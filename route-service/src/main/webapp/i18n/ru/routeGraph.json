@@ -1,0 +1,24 @@
+
+{
+    "routeServiceApp": {
+        "routeGraph" : {
+            "home": {
+                "title": "Route Graphs",
+                "createLabel": "Создать новый Route Graph",
+                "createOrEditLabel": "Создать или отредактировать Route Graph"
+            },
+            "created": "Новый Route Graph создан с идентификатором {{ param }}",
+            "updated": "Route Graph обновлен с идентификатором {{ param }}",
+            "deleted": "Route Graph удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Route Graph {{ id }}?"
+            },
+            "detail": {
+                "title": "Route Graph"
+            },
+            "time": "Time",
+            "pointOne": "Point One",
+            "pointTwo": "Point Two"
+        }
+    }
+}

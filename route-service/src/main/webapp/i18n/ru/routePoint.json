@@ -1,0 +1,22 @@
+
+{
+    "routeServiceApp": {
+        "routePoint" : {
+            "home": {
+                "title": "Route Points",
+                "createLabel": "Создать новый Route Point",
+                "createOrEditLabel": "Создать или отредактировать Route Point"
+            },
+            "created": "Новый Route Point создан с идентификатором {{ param }}",
+            "updated": "Route Point обновлен с идентификатором {{ param }}",
+            "deleted": "Route Point удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Route Point {{ id }}?"
+            },
+            "detail": {
+                "title": "Route Point"
+            },
+            "route": "Route"
+        }
+    }
+}

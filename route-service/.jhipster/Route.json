@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "routes",
+            "otherEntityName": "routePoint",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "route"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "isReady",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "time",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180616064028",
+    "entityTableName": "route",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "routeService"
+}

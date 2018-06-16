@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity RouteGraph.
+    -->
+    <changeSet id="20180616064030-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="point_one_id"
+                                 baseTableName="route_graph"
+                                 constraintName="fk_route_graph_point_one_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="route_point"/>
+
+        <addForeignKeyConstraint baseColumnNames="point_two_id"
+                                 baseTableName="route_graph"
+                                 constraintName="fk_route_graph_point_two_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="route_point"/>
+
+    </changeSet>
+</databaseChangeLog>

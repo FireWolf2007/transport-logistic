@@ -1,0 +1,28 @@
+
+<div *ngIf="routePoint">
+    <h2><span jhiTranslate="routeServiceApp.routePoint.detail.title">Route Point</span> {{routePoint.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="routeServiceApp.routePoint.route">Route</span></dt>
+        <dd>
+            <div *ngIf="routePoint.routeId">
+                <a [routerLink]="['/route-route-service', routePoint.routeId]">{{routePoint.routeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'route-point-route-service/'+ routePoint.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,33 @@
+entity Route {
+    isReady Boolean,
+    time Integer
+}
+
+
+entity RoutePoint {
+
+}
+
+relationship OneToOne {
+    RoutePoint{route required} to Route{routes}
+    //RoutePoint{route required} to Route
+}
+
+entity RouteGraph {
+    time Integer
+}
+
+relationship ManyToOne {
+    RouteGraph{pointOne required} to RoutePoint,
+    RouteGraph{pointTwo required} to RoutePoint
+}
+
+// Set pagination options
+paginate * with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with routeService

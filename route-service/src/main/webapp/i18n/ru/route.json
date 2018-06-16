@@ -1,0 +1,24 @@
+
+{
+    "routeServiceApp": {
+        "route" : {
+            "home": {
+                "title": "Routes",
+                "createLabel": "Создать новый Route",
+                "createOrEditLabel": "Создать или отредактировать Route"
+            },
+            "created": "Новый Route создан с идентификатором {{ param }}",
+            "updated": "Route обновлен с идентификатором {{ param }}",
+            "deleted": "Route удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Route {{ id }}?"
+            },
+            "detail": {
+                "title": "Route"
+            },
+            "isReady": "Is Ready",
+            "time": "Time",
+            "routes": "Routes"
+        }
+    }
+}

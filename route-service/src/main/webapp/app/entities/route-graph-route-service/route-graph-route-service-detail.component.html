@@ -1,0 +1,38 @@
+
+<div *ngIf="routeGraph">
+    <h2><span jhiTranslate="routeServiceApp.routeGraph.detail.title">Route Graph</span> {{routeGraph.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="routeServiceApp.routeGraph.time">Time</span></dt>
+        <dd>
+            <span>{{routeGraph.time}}</span>
+        </dd>
+        <dt><span jhiTranslate="routeServiceApp.routeGraph.pointOne">Point One</span></dt>
+        <dd>
+            <div *ngIf="routeGraph.pointOneId">
+                <a [routerLink]="['/route-point-route-service', routeGraph.pointOneId]">{{routeGraph.pointOneId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="routeServiceApp.routeGraph.pointTwo">Point Two</span></dt>
+        <dd>
+            <div *ngIf="routeGraph.pointTwoId">
+                <a [routerLink]="['/route-point-route-service', routeGraph.pointTwoId]">{{routeGraph.pointTwoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'route-graph-route-service/'+ routeGraph.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
