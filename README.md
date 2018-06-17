@@ -215,7 +215,7 @@ REST API доступен по адресу http://127.0.0.1:8080/#/docs
 
 если не удаляется контейнер (есть ошибки), то скорее всего он запущен и его надо остановить: `docker stop 6ad333cc272d`
 
-или все одной командой: `docker rm &#96;docker ps -a | grep docker_routeservice-postgresql | awk '{print $1}'&#96;`
+или все одной командой: ``docker rm `docker ps -a | grep docker_routeservice-postgresql | awk '{print $1}'` ``
 
 и запускаем заново БД: `cd route-service && docker-compose -f src/main/docker/postgresql.yml up`
 
