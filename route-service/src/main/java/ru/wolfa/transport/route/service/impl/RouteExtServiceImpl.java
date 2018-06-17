@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import ru.wolfa.transport.route.domain.Route;
 import ru.wolfa.transport.route.domain.RoutePoint;
 import ru.wolfa.transport.route.repository.ExtRouteRepository;
+import ru.wolfa.transport.route.service.ExtTimingService;
 import ru.wolfa.transport.route.service.RouteExtService;
 import ru.wolfa.transport.route.service.RoutePointService;
 import ru.wolfa.transport.route.service.RouteService;
@@ -26,15 +27,15 @@ import ru.wolfa.transport.route.service.mapper.ExtRouteMapper;
 public class RouteExtServiceImpl implements RouteExtService {
 
     @Override
-    public RouteDTO save(RouteDTO routeDTO, List<Integer> routePoints) {
+    public RouteDTO save(RouteDTO routeDTO, List<Long> routePoints) {
         RouteDTO result = routeService.save(routeDTO);
-        for (Integer routePointId : routePoints) {
+        for (Long routePointId : routePoints) {
             RoutePointDTO routePointDTO = new RoutePointDTO();
             routePointDTO.setRouteId(result.getId());
-            routePointDTO.setId(Long.valueOf(routePointId.longValue()));
+            routePointDTO.setId(routePointId);
             routePointService.save(routePointDTO);
         }
-        // FIXME Call async routeTimeCalc
+        extTimingService.updateRoute(result, routePoints);
         return result;
     }
 
@@ -73,11 +74,13 @@ public class RouteExtServiceImpl implements RouteExtService {
     public RouteExtServiceImpl(RouteService routeService,
             RoutePointService routePointService,
             ExtRouteMapper extRouteMapper,
-            ExtRouteRepository extRouteRepository) {
+            ExtRouteRepository extRouteRepository,
+            ExtTimingService extTimingService) {
         this.routeService = routeService;
         this.routePointService = routePointService;
         this.extRouteMapper = extRouteMapper;
         this.extRouteRepository = extRouteRepository;
+        this.extTimingService = extTimingService;
     }
 
     private final RouteService routeService;
@@ -87,6 +90,8 @@ public class RouteExtServiceImpl implements RouteExtService {
     private final ExtRouteMapper extRouteMapper;
 
     private final ExtRouteRepository extRouteRepository;
+
+    private final ExtTimingService extTimingService;
 
 
 }

@@ -34,7 +34,7 @@ public class RouteExtResource {
 
     @PostMapping("/add-route")
     @Timed
-    public ResponseEntity<Long> addRoute(@RequestBody List<Integer> routePoints) throws URISyntaxException {
+    public ResponseEntity<Long> addRoute(@RequestBody List<Long> routePoints) throws URISyntaxException {
         log.debug("REST request to create new Route with routePoints: {}", routePoints);
         if (routePoints == null || routePoints.size() == 0) {
             throw new BadRequestAlertException("A new route cannot be empty", ENTITY_NAME, "route.points.empty");

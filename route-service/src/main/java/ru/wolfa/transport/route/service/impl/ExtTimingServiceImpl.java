@@ -1,13 +1,16 @@
-package ru.wolfa.transport.timing.service.impl;
+package ru.wolfa.transport.route.service.impl;
 
 import java.util.List;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.wolfa.transport.timing.domain.RouteGraph;
-import ru.wolfa.transport.timing.repository.RouteGraphExtRepository;
-import ru.wolfa.transport.timing.service.ExtTimingService;
+import ru.wolfa.transport.route.domain.RouteGraph;
+import ru.wolfa.transport.route.repository.RouteGraphExtRepository;
+import ru.wolfa.transport.route.service.ExtTimingService;
+import ru.wolfa.transport.route.service.RouteService;
+import ru.wolfa.transport.route.service.dto.RouteDTO;
 
 @Service
 @Transactional
@@ -30,9 +33,21 @@ public class ExtTimingServiceImpl implements ExtTimingService {
         return Long.valueOf(totalTime);
     }
 
-    public ExtTimingServiceImpl(RouteGraphExtRepository routeGraphExtRepository) {
+    @Async
+    public void updateRoute(RouteDTO routeDTO, List<Long> routePoints) {
+        routeDTO.setTime(calcTiming(routePoints).intValue());
+        routeDTO.setIsReady(Boolean.TRUE);
+        routeService.save(routeDTO);
+    }
+
+    public ExtTimingServiceImpl(RouteGraphExtRepository routeGraphExtRepository,
+            RouteService routeService) {
         this.routeGraphExtRepository = routeGraphExtRepository;
+        this.routeService = routeService;
     }
 
     private final RouteGraphExtRepository routeGraphExtRepository;
+
+    private final RouteService routeService;
+
 }

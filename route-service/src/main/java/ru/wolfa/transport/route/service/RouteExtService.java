@@ -10,7 +10,7 @@ import ru.wolfa.transport.route.service.dto.RouteDTO;
 
 public interface RouteExtService {
 
-    RouteDTO save(RouteDTO routeDTO, List<Integer> routePoints);
+    RouteDTO save(RouteDTO routeDTO, List<Long> routePoints);
 
     Page<ExtRouteDTO> getRoutes(Pageable pageable);
 
