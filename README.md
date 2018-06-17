@@ -268,12 +268,12 @@ GET /api/ext/get-route
 
 В данном случае проблема в формировании условия *ngIF="routePoint.routeId" при значении routePoint.routeId=0 рассматривается как false.
 
-Проверка должна быть if (c || c === 0).
 
 Примерно такая же проблема была в дочернем проекте ng-jhipster ([Code review](https://github.com/jhipster/ng-jhipster/pull/68#pullrequestreview-121644461)), там вопрос решили с помощью нескольких сравнений (null, undefined и т.д.).
 
-[Pull request]().
+Проверка должна быть if (c || c === 0).
 
+[Issue](https://github.com/jhipster/generator-jhipster/issues/7801)
 
 ## Комментарий по выборке в /api/ext/get-routes
 

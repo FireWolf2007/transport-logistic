@@ -28,12 +28,12 @@
                 <td><a [routerLink]="['../route-graph-route-service', routeGraph.id ]">{{routeGraph.id}}</a></td>
                 <td>{{routeGraph.time}}</td>
                 <td>
-                    <div *ngIf="routeGraph.pointFirstId !== ''">
+                    <div *ngIf="routeGraph.pointFirstId === 0 || routeGraph.pointFirstId">
                         <a [routerLink]="['../route-point-route-service', routeGraph.pointFirstId  ]" >{{routeGraph.pointFirstId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="routeGraph.pointSecondId !== ''">
+                    <div *ngIf="routeGraph.pointSecondId === 0 || routeGraph.pointSecondId">
                         <a [routerLink]="['../route-point-route-service', routeGraph.pointSecondId  ]" >{{routeGraph.pointSecondId}}</a>
                     </div>
                 </td>

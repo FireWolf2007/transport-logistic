@@ -25,7 +25,7 @@
             <tr *ngFor="let routePoint of routePoints ;trackBy: trackId">
                 <td><a [routerLink]="['../route-point-route-service', routePoint.id ]">{{routePoint.id}}</a></td>
                 <td>
-                    <div *ngIf="routePoint.routeId !== ''">
+                    <div *ngIf="routePoint.routeId === 0 || routePoint.routeId">
                         <a [routerLink]="['../route-route-service', routePoint.routeId  ]" >{{routePoint.routeId}}</a>
                     </div>
                 </td>
