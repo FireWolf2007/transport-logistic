@@ -18,7 +18,7 @@ import ru.wolfa.transport.timing.service.ExtTimingService;
 public class TimingExtResource {
 
     @PostMapping("/route-timing")
-    @Secured("ROLE_USER")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Long> getRouteTiming(@RequestBody List<Long> routePoints) {
         return ResponseEntity.ok(extTimingService.calcTiming(routePoints));
     }
