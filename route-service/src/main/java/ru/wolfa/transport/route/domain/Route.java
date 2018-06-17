@@ -1,6 +1,8 @@
 package ru.wolfa.transport.route.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -12,8 +14,9 @@ import java.util.Set;
 import java.util.Objects;
 
 /**
- * A Route.
+ * Маршрут
  */
+@ApiModel(description = "Маршрут")
 @Entity
 @Table(name = "route")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -26,9 +29,17 @@ public class Route implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    /**
+     * Посчитано ли время на маршрут
+     */
+    @ApiModelProperty(value = "Посчитано ли время на маршрут")
     @Column(name = "is_ready")
     private Boolean isReady;
 
+    /**
+     * Время на маршрут в минутах
+     */
+    @ApiModelProperty(value = "Время на маршрут в минутах")
     @Column(name = "jhi_time")
     private Integer time;
 

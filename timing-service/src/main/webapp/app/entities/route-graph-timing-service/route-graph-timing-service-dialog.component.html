@@ -13,17 +13,17 @@
                    [(ngModel)]="routeGraph.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="timingServiceApp.routeGraph.pointFirstId" for="field_pointFirstId">Point First Id</label>
+            <label class="form-control-label" jhiTranslate="timingServiceApp.routeGraph.pointFirstId" for="field_pointFirstId" [ngbTooltip]="'timingServiceApp.routeGraph.help.pointFirstId' | translate">Point First Id</label>
             <input type="number" class="form-control" name="pointFirstId" id="field_pointFirstId"
                 [(ngModel)]="routeGraph.pointFirstId" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="timingServiceApp.routeGraph.pointSecondId" for="field_pointSecondId">Point Second Id</label>
+            <label class="form-control-label" jhiTranslate="timingServiceApp.routeGraph.pointSecondId" for="field_pointSecondId" [ngbTooltip]="'timingServiceApp.routeGraph.help.pointSecondId' | translate">Point Second Id</label>
             <input type="number" class="form-control" name="pointSecondId" id="field_pointSecondId"
                 [(ngModel)]="routeGraph.pointSecondId" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="timingServiceApp.routeGraph.time" for="field_time">Time</label>
+            <label class="form-control-label" jhiTranslate="timingServiceApp.routeGraph.time" for="field_time" [ngbTooltip]="'timingServiceApp.routeGraph.help.time' | translate">Time</label>
             <input type="number" class="form-control" name="time" id="field_time"
                 [(ngModel)]="routeGraph.time" />
         </div>

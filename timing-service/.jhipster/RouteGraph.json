@@ -4,18 +4,22 @@
     "fields": [
         {
             "fieldName": "pointFirstId",
+            "javadoc": "Первая точка маршрута",
             "fieldType": "Long"
         },
         {
             "fieldName": "pointSecondId",
+            "javadoc": "Вторая точка маршрута",
             "fieldType": "Long"
         },
         {
             "fieldName": "time",
+            "javadoc": "Время на маршрут в минутах",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20180616191500",
+    "javadoc": "Граф точек маршрута",
     "entityTableName": "route_graph",
     "dto": "mapstruct",
     "pagination": "pagination",

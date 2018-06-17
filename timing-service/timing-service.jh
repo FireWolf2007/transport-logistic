@@ -1,6 +1,12 @@
+/* Граф точек маршрута */
 entity RouteGraph {
+    /* Первая точка маршрута */
     pointFirstId Long,
+
+    /* Вторая точка маршрута */
     pointSecondId Long,
+
+    /* Время на маршрут в минутах */
     time Integer
 }
 

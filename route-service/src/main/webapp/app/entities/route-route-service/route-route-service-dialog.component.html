@@ -13,12 +13,12 @@
                    [(ngModel)]="route.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="routeServiceApp.route.isReady" for="field_isReady">Is Ready</label>
+            <label class="form-control-label" jhiTranslate="routeServiceApp.route.isReady" for="field_isReady" [ngbTooltip]="'routeServiceApp.route.help.isReady' | translate">Is Ready</label>
             <input type="checkbox" class="form-control" name="isReady" id="field_isReady"
                 [(ngModel)]="route.isReady" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="routeServiceApp.route.time" for="field_time">Time</label>
+            <label class="form-control-label" jhiTranslate="routeServiceApp.route.time" for="field_time" [ngbTooltip]="'routeServiceApp.route.help.time' | translate">Time</label>
             <input type="number" class="form-control" name="time" id="field_time"
                 [(ngModel)]="route.time" />
         </div>

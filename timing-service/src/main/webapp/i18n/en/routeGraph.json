@@ -18,7 +18,12 @@
             },
             "pointFirstId": "Point First Id",
             "pointSecondId": "Point Second Id",
-            "time": "Time"
+            "time": "Time",
+            "help": {
+                "pointFirstId": "Первая точка маршрута",
+                "pointSecondId": "Вторая точка маршрута",
+                "time": "Время на маршрут в минутах"
+            }
         }
     }
 }

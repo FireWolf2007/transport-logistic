@@ -1,5 +1,7 @@
 package ru.wolfa.transport.timing.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,8 +11,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A RouteGraph.
+ * Граф точек маршрута
  */
+@ApiModel(description = "Граф точек маршрута")
 @Entity
 @Table(name = "route_graph")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -23,12 +26,24 @@ public class RouteGraph implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    /**
+     * Первая точка маршрута
+     */
+    @ApiModelProperty(value = "Первая точка маршрута")
     @Column(name = "point_first_id")
     private Long pointFirstId;
 
+    /**
+     * Вторая точка маршрута
+     */
+    @ApiModelProperty(value = "Вторая точка маршрута")
     @Column(name = "point_second_id")
     private Long pointSecondId;
 
+    /**
+     * Время на маршрут в минутах
+     */
+    @ApiModelProperty(value = "Время на маршрут в минутах")
     @Column(name = "jhi_time")
     private Integer time;
 

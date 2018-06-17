@@ -4,6 +4,7 @@
         {
             "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
+            "javadoc": "Точки маршрута",
             "relationshipName": "route",
             "otherEntityName": "route",
             "otherEntityField": "id"
@@ -11,6 +12,7 @@
     ],
     "fields": [],
     "changelogDate": "20180616064029",
+    "javadoc": "Точка маршрута",
     "entityTableName": "route_point",
     "dto": "mapstruct",
     "pagination": "pagination",

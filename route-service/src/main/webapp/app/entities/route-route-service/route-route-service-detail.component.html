@@ -4,11 +4,11 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="routeServiceApp.route.isReady">Is Ready</span></dt>
+        <dt><span jhiTranslate="routeServiceApp.route.isReady" [ngbTooltip]="'routeServiceApp.route.help.isReady' | translate">Is Ready</span></dt>
         <dd>
             <span>{{route.isReady}}</span>
         </dd>
-        <dt><span jhiTranslate="routeServiceApp.route.time">Time</span></dt>
+        <dt><span jhiTranslate="routeServiceApp.route.time" [ngbTooltip]="'routeServiceApp.route.help.time' | translate">Time</span></dt>
         <dd>
             <span>{{route.time}}</span>
         </dd>

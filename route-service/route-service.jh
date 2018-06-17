@@ -1,24 +1,33 @@
+/* Маршрут */
 entity Route {
+    /* Посчитано ли время на маршрут */
     isReady Boolean,
+    /* Время на маршрут в минутах */
     time Integer
 }
 
-
+/* Точка маршрута */
 entity RoutePoint {
 
 }
 
 relationship ManyToOne {
+    /* Точки маршрута */
     RoutePoint{route(id) required} to Route{routes}
     //RoutePoint{route required} to Route
 }
 
+/* Граф точек маршрута */
 entity RouteGraph {
+    /* Время на маршрут в минутах */
     time Integer
 }
 
 relationship ManyToOne {
+    /* Первая точка маршрута */
     RouteGraph{pointFirst(id) required} to RoutePoint,
+
+    /* Вторая точка маршрута */
     RouteGraph{pointSecond(id) required} to RoutePoint
 }
 

@@ -11,14 +11,17 @@
     "fields": [
         {
             "fieldName": "isReady",
+            "javadoc": "Посчитано ли время на маршрут",
             "fieldType": "Boolean"
         },
         {
             "fieldName": "time",
+            "javadoc": "Время на маршрут в минутах",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20180616064028",
+    "javadoc": "Маршрут",
     "entityTableName": "route",
     "dto": "mapstruct",
     "pagination": "pagination",

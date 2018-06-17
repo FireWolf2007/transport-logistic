@@ -18,7 +18,11 @@
             },
             "isReady": "Is Ready",
             "time": "Time",
-            "routes": "Routes"
+            "routes": "Routes",
+            "help": {
+                "isReady": "Посчитано ли время на маршрут",
+                "time": "Время на маршрут в минутах"
+            }
         }
     }
 }
